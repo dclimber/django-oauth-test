@@ -1,4 +1,4 @@
-from django.test import TestCase
+from django.test import TestCase, Client
 from django.contrib.auth import get_user_model
 from .models import Profile
 
@@ -19,3 +19,14 @@ class ProfileTestCase(TestCase):
         user2 = UserModel.objects.get(username="test2")
         self.assertIsNotNone(user1.profile)
         self.assertIsNotNone(user2.profile)
+
+
+class DashboardViewTest(TestCase):
+    def setUp(self):
+        self.client = Client()
+
+    def test_redirect(self):
+        response = self.client.get('/')
+
+        # check that response is redirect
+        self.assertRedirects(response, '/accounts/login/?next=/')

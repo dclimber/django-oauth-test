@@ -1,7 +1,22 @@
 {% extends "base.html" %}
 
-{% block content %}
-<div class="bg-light d-flex align-items-center justify-content-center min-vh-100">
-    <h1><b>Welcome!</b></h1>
-</div>
-{% endblock content %}
+{% block base_content %}
+<main class="bg-image min-vh-100">
+    <div class="min-vh-100 d-flex align-items-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-lg-10 mx-auto">
+                    <div class="card">
+                        <div class="card-body">
+                            <h1><b>Welcome{% if user.first_name %}, {{ user.first_name }}{% endif %}!</b></h1>
+                            <hr>
+                            <p><b>Your PlacePass subscription status:</b>&nbsp;{{ user.profile.in_newsletter|yesno:"subscribed,unsubscribed" }}</p>
+                            <a href="{% url 'account_logout' %}" class="btn btn-info">Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock base_content %}
