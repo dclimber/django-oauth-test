@@ -1,6 +1,6 @@
 from django import forms
 from django.utils.translation import gettext_lazy as _
-from allauth.account.forms import SignupForm
+from allauth.account.forms import SignupForm, LoginForm
 
 
 class ProfileSignupForm(SignupForm):
@@ -41,3 +41,13 @@ class ProfileSignupForm(SignupForm):
             user.profile.in_newsletter = True  # value of newsletter field
             user.profile.save()
         return user
+
+
+class ProfileLoginForm(LoginForm):
+
+    def __init__(self, *args, **kwargs):
+        super(ProfileLoginForm, self).__init__(*args, **kwargs)
+        self.icons = {
+            'login': 'far fa-envelope',
+            'password': 'fas fa-lock',
+        }

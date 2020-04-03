@@ -154,6 +154,7 @@ AUTHENTICATION_BACKENDS = (
 
 ACCOUNT_FORMS = {
     'signup': 'apps.profiles.forms.ProfileSignupForm',
+    'login': 'apps.profiles.forms.ProfileLoginForm'
 }
 
 LOGIN_REDIRECT_URL = reverse_lazy("home")
