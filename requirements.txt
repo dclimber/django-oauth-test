@@ -2,3 +2,4 @@ Django>=2.2,<2.3
 psycopg2-binary
 ipython
 django-environ
+django-allauth
