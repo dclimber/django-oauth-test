@@ -51,6 +51,7 @@ AUTH_APPS = [
 
 PROJECT_APPS = [
     'widget_tweaks',
+    'apps.profiles',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + AUTH_APPS + PROJECT_APPS
