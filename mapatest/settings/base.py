@@ -152,5 +152,9 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
+ACCOUNT_FORMS = {
+    'signup': 'apps.profiles.forms.ProfileSignupForm',
+}
+
 LOGIN_REDIRECT_URL = reverse_lazy("home")
 LOGIN_URL = reverse_lazy("account_login")
