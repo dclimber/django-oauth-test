@@ -3,3 +3,4 @@ psycopg2-binary
 ipython
 django-environ
 django-allauth
+django-widget-tweaks
