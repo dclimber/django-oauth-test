@@ -1,3 +1,22 @@
 {% extends "base.html" %}
 
-{% block body_class %}bg-image min-vh-100{% endblock body_class %}
+{% block base_content %}
+    <main class="bg-image min-vh-100">
+        <div class="min-vh-100 d-flex align-items-center">
+          <div class="container">
+            <div class="row">
+                {% block row_content %}
+                    <div class="col-12 col-lg-10 mx-auto">
+                        <div class="card">
+                            <div class="card-body">
+                                {% block content %}
+                                {% endblock content %}
+                            </div>
+                        </div>
+                    </div>
+                {% endblock row_content %}
+            </div>
+          </div>
+        </div>
+    </main>    
+{% endblock base_content %}
