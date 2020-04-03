@@ -10,23 +10,31 @@
 
 <!--Body-->
 {% for field in form.visible_fields %}
-  {% if field.html_name == 'remember' %}
-    <div class="d-flex mb-2">
-      <div>
-        <div class="custom-control custom-checkbox">
-            {{ field|add_class:'custom-control-input' }}
-            <label for="{{ field.id_for_label }}" class="">{{ field.label }}
-            </label>
-            {% for error in field.errors %}
-              <div class="invalid-feedback">{{ error }}</div>
-            {% endfor %}
-        </div>
-      </div>
+  {% if field.field.widget.input_type  == 'checkbox' %}
+    <div class="form-check">
+        {{ field|add_class:'form-check-input' }}
+        <label for="{{ field.id_for_label }}" class="form-check-label pl-1">{{ field.label }}
+        </label>
+        {% for error in field.errors %}
+          <div class="invalid-feedback">{{ error }}</div>
+        {% endfor %}
     </div>
   {% else %}
     <div class="form-group mb-2">
+      {% if not no_label %}
       <label for="{{ field.id_for_label }}" class="">{{ field.label }}</label>
-      {{ field|add_class:'form-control' }}  
+      {% endif %}
+      
+      <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            {% for key, value in form.icons.items %}
+                {% if field.name == key %}
+                  <span class="input-group-text bg-transparent border-right-0"><i class="{{ value }} px-2"></i></span>
+                {% endif %}
+            {% endfor %}
+            </div>
+          {{ field|add_class:'form-control border-left-0 pl-1' }}
+      </div>
    
       {% for error in field.errors %}
         <div class="invalid-feedback">{{ error }}</div>

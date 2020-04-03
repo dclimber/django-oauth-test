@@ -1,43 +1,37 @@
 {% extends "account/base.html" %}
 
-{% load i18n widget_tweaks %}
+{% load i18n widget_tweaks socialaccount %}
 
 {% block head_title %}{% trans "Signup" %}{% endblock %}
 
-{% block content %}
-<div class="min-vh-100 d-flex align-items-center">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-4 col-md-6 mx-auto">
-      {# Form with header #}
-        <div class="card">
-            <div class="card-body mx-4 mt-2">
-                <div class="text-center">
-                    <h3 class="mb-5">
-                        <strong>{% trans "Sign Up" %}</strong>
-                    </h3>
-                </div>
-                <form class="" id="signup_form" method="post" action="{% url 'account_signup' %}">
-                  {% csrf_token %}
+{% block row_content %}
+<div class="col-lg-5 col-md-6 mx-auto">
+{# Form with header #}
+  <div class="card">
+      <div class="card-body mx-2 mt-2">
+          <h6 class="text-uppercase text-center mb-3">
+              <strong>{% trans "Sign Up with" %}</strong>
+          </h6>
+          {% include "account/_social_login.html" %}
+          <form class="" id="signup_form" method="post" action="{% url 'account_signup' %}">
+            {% csrf_token %}
 
-                  {% include "partials/form_fields.html" %}
+            {% include "partials/form_fields.html" with no_label=True %}
 
-                  <div class="text-center mb-4 pt-3">
-                      <button type="submit" class="btn btn-primary btn-block">{% trans "Sign Up" %} &raquo;</button>
-                  </div>
-
-                  <p class="font-small grey-text d-flex justify-content-end forms-after-text">
-                      {% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}
-                  </p>
-
-                </form>
-
+            <div class="text-center mb-4 pt-3">
+                <button type="submit" class="btn btn-success btn-lg btn-block text-uppercase py-3"><small>{% trans "Register" %}</small></button>
             </div>
 
-        </div>
-      {# /Form with header #}
+            <div class="d-flex justify-content-between align-items-center">
+              <span><b>{% trans "Already have an account?" %}</b></span>
+              <a href="{{ login_url }}" class="btn btn-outline-info text-uppercase px-4"><small>{% trans "Log in" %}</small></a>
+            </div>
+
+          </form>
+
       </div>
-    </div>
+
   </div>
+{# /Form with header #}
 </div>
 {% endblock %}

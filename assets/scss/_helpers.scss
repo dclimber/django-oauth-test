@@ -1,3 +1,8 @@
+// vars
+$fb-color: #3C5799;
+$google-color: #4C7EDE;
+
+// styles
 .min-vh-100 {
     min-height: 100vh;
 }
@@ -23,4 +28,12 @@
         background-size: cover;
         opacity: .3;
     }
+}
+
+.color-fb {
+    color: $fb-color;
+}
+
+.color-google {
+    color: $google-color;
 }
