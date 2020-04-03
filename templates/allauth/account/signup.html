@@ -1,0 +1,43 @@
+{% extends "account/base.html" %}
+
+{% load i18n widget_tweaks %}
+
+{% block head_title %}{% trans "Signup" %}{% endblock %}
+
+{% block content %}
+<div class="min-vh-100 d-flex align-items-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-6 mx-auto">
+      {# Form with header #}
+        <div class="card">
+            <div class="card-body mx-4 mt-2">
+                <div class="text-center">
+                    <h3 class="mb-5">
+                        <strong>{% trans "Sign Up" %}</strong>
+                    </h3>
+                </div>
+                <form class="" id="signup_form" method="post" action="{% url 'account_signup' %}">
+                  {% csrf_token %}
+
+                  {% include "partials/form_fields.html" %}
+
+                  <div class="text-center mb-4 pt-3">
+                      <button type="submit" class="btn btn-primary btn-block">{% trans "Sign Up" %} &raquo;</button>
+                  </div>
+
+                  <p class="font-small grey-text d-flex justify-content-end forms-after-text">
+                      {% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}
+                  </p>
+
+                </form>
+
+            </div>
+
+        </div>
+      {# /Form with header #}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

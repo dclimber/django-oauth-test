@@ -1,0 +1,38 @@
+{% load widget_tweaks %}
+
+{% for hidden in form.hidden_fields %}
+  {{ hidden }}
+{% endfor %}
+
+{% if redirect_field_value %}
+  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+{% endif %}
+
+<!--Body-->
+{% for field in form.visible_fields %}
+  {% if field.html_name == 'remember' %}
+    <div class="d-flex mb-2">
+      <div>
+        <div class="custom-control custom-checkbox">
+            {{ field|add_class:'custom-control-input' }}
+            <label for="{{ field.id_for_label }}" class="">{{ field.label }}
+            </label>
+            {% for error in field.errors %}
+              <div class="invalid-feedback">{{ error }}</div>
+            {% endfor %}
+        </div>
+      </div>
+    </div>
+  {% else %}
+    <div class="form-group mb-2">
+      <label for="{{ field.id_for_label }}" class="">{{ field.label }}</label>
+      {{ field|add_class:'form-control' }}  
+   
+      {% for error in field.errors %}
+        <div class="invalid-feedback">{{ error }}</div>
+      {% endfor %}
+    </div>
+  {% endif%}
+{% endfor %}
+
+{% include "partials/form_errors.html" with form=form %}
