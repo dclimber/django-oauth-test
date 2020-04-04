@@ -12,6 +12,7 @@ UserModel = get_user_model()
 class Profile(models.Model):
     user = models.OneToOneField(UserModel, on_delete=models.CASCADE)
     in_newsletter = models.BooleanField(_("In newsletter?"), default=False)
+    newsletter_offered = models.BooleanField(default=False)
 
     class Meta:
         verbose_name = _("profile")
@@ -20,6 +21,9 @@ class Profile(models.Model):
     def __str__(self):
         return "{}, {}: {}".format(self.user.email, _('in newsletter'),
                                    self.in_newsletter)
+
+    def get_newsletter_offered(self):
+        return self.in_newsletter or self.newsletter_offered
 
 
 @receiver(post_save, sender=UserModel)
