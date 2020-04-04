@@ -16,12 +16,17 @@ Including another URLconf
 from django.conf import settings
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic import TemplateView
 from apps.profiles.views import DashboardView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', DashboardView.as_view(), name="home"),
     path('accounts/', include('allauth.urls')),
+    path('privacy-policy/', TemplateView.as_view(template_name="privacy-policy.html"),
+         name="privacy-policy"),
+    path('user-agreement/', TemplateView.as_view(template_name="user-agreement.html"),
+         name="user-agreement"),
 ]
 
 if settings.DEBUG:
