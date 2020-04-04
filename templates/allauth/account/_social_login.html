@@ -1,5 +1,6 @@
+{% load socialaccount %}
 <div class="d-flex justify-content-between align-items-center mb-2 px-2">
-    <a class="btn btn-outline-light border-0 color-fb" href=""><i class="fab fa-facebook-f color-fb pr-2"></i>FACEBOOK</a> / <a class="btn btn-outline-light border-0 color-google pr-3" href=""><i class="fab fa-google color-google pr-3"></i>GOOGLE&nbsp;&nbsp;</a>
+    <a class="btn btn-outline-light border-0 color-fb" href=""><i class="fab fa-facebook-f color-fb pr-2"></i>FACEBOOK</a> / <a class="btn btn-outline-light border-0 color-google pr-3" href="{% provider_login_url 'google' %}"><i class="fab fa-google color-google pr-3"></i>GOOGLE&nbsp;&nbsp;</a>
 </div>
 <div class="d-flex justify-content-between align-items-center mb-2">
     <hr class="flex-fill">&nbsp;or&nbsp;<hr class="flex-fill">
