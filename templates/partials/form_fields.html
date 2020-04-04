@@ -11,10 +11,13 @@
 <!--Body-->
 {% for field in form.visible_fields %}
   {% if field.field.widget.input_type  == 'checkbox' %}
-    <div class="form-check">
-        {{ field|add_class:'form-check-input' }}
-        <label for="{{ field.id_for_label }}" class="form-check-label pl-1">{{ field.label }}
+    <div class="form-check mt-3">
+        <label class="custom-checkbox-container" for="{{ field.id_for_label }}">
+          {{ field.label }}
+          {{ field }}
+          <span class="checkmark"></span>
         </label>
+
         {% for error in field.errors %}
           <div class="invalid-feedback">{{ error }}</div>
         {% endfor %}
@@ -29,7 +32,7 @@
           <div class="input-group-prepend">
             {% for key, value in form.icons.items %}
                 {% if field.name == key %}
-                  <span class="input-group-text bg-transparent border-right-0"><i class="{{ value }} px-2"></i></span>
+                  <span class="input-group-text bg-transparent border-right-0"><i class="{{ value }} fa-lg px-2"></i></span>
                 {% endif %}
             {% endfor %}
             </div>

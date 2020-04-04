@@ -37,3 +37,70 @@ $google-color: #4C7EDE;
 .font-weight-medium {
     font-weight: 500 !important;
 }
+
+// custom checkbox
+
+.custom-checkbox-container {
+    padding-left: 20px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    &:hover input ~ .checkmark {
+        // add grey bg-color on hover
+        background-color: $gray-100;
+    }
+
+    input {
+        // hide browser's checkbox
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+
+        &:checked ~ .checkmark {
+            // when checked - add light bg
+            background-color: $light;
+
+            &:after {
+                // show checkmark, when checked
+                display: block;
+            }
+        }
+    }
+
+    .checkmark:after {
+        // style the tick (indicator)
+        left: 8px;
+        top: 2px;
+        width: 10px;
+        height: 15px;
+        border: solid $green;
+        border-width: 0 3px 3px 0;
+        -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+
+}
+
+.checkmark {
+    // custom checkbox itself
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: $gray-100;
+    box-shadow: 0 0.125rem 0.25rem rgba($black, 0.25);
+
+    &:after {
+        // create tick (checkmark itself), hidden when not checked
+        content: "";
+        position: absolute;
+        display: none;
+    }
+}
