@@ -9,8 +9,8 @@
 {# Form with header #}
   <div class="card my-3">
       <div class="card-body mx-2">
-          <h6 class="text-uppercase text-center mb-3">
-              <strong>{% trans "Sign Up with" %}</strong>
+          <h6 class="text-uppercase text-center mb-3 mt-2">
+              <span class="font-weight-medium">{% trans "Sign Up with" %}</span>
           </h6>
           {% include "account/_social_login.html" %}
           <form class="" id="signup_form" method="post" action="{% url 'account_signup' %}">
@@ -23,12 +23,12 @@
             </p>
 
             <div class="text-center pt-2 pb-4">
-                <button type="submit" class="btn btn-success btn-lg btn-block text-uppercase py-3"><small>{% trans "Register" %}</small></button>
+                <button type="submit" class="btn btn-success btn-lg btn-block text-uppercase py-3"><small class="font-weight-medium">{% trans "Register" %}</small></button>
             </div>
 
-            <div class="d-flex justify-content-between align-items-center">
-              <span><b>{% trans "Already have an account?" %}</b></span>
-              <a href="{{ login_url }}" class="btn btn-outline-info text-uppercase px-4"><small>{% trans "Log in" %}</small></a>
+            <div class="d-flex justify-content-between align-items-center pb-2">
+              <span class="font-weight-medium">{% trans "Already have an account?" %}</span>
+              <a href="{{ login_url }}" class="btn btn-outline-info text-uppercase font-weight-medium px-5">{% trans "Log in" %}</a>
             </div>
 
           </form>
