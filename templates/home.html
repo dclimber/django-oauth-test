@@ -19,4 +19,37 @@
         </div>
     </div>
 </main>
+
+<div class="modal fade" id="newsletterModal" tabindex="-1" role="dialog" aria-labelledby="newsletterModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="newsletterModalTitle">
+          Would you like to receive PlacePass news and offers?
+        </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form method="post" action="">
+        {% csrf_token %}
+        <div class="modal-footer">
+            <input type="submit" class="btn btn-success" name="choice" value="Yes">
+            <input type="submit" class="btn btn-light" name="choice" value="No">
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 {% endblock base_content %}
+
+{% block extra_js %}
+<script type="text/javascript">
+$(document).ready(function(){
+    var newsletterOffered = {{ user.profile.get_newsletter_offered|yesno:"true,false" }};
+    if (!newsletterOffered) {
+        $('#newsletterModal').modal('toggle');
+    } 
+});
+</script>
+{% endblock extra_js %}
