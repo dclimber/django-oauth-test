@@ -38,6 +38,7 @@ class ProfileSignupForm(SignupForm):
         user.last_name = self.cleaned_data['last_name']
         user.save()
         # populate Profile model
+        user.profile.newsletter_offered = True
         if self.cleaned_data['newsletter']:
             user.profile.in_newsletter = True  # value of newsletter field
             user.profile.save()
