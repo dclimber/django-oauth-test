@@ -10,7 +10,7 @@
   <div class="card">
       <div class="card-body mx-2 mt-2">
           <h6 class="text-uppercase text-center mb-3">
-              <strong>{% trans "Sign In With" %}</strong>
+              <span class="font-weight-medium">{% trans "Sign In With" %}</span>
           </h6>
           {% include "account/_social_login.html" %}
           <form method="post" action="{% url 'account_login' %}">
@@ -19,12 +19,12 @@
             {% include "partials/form_fields.html" with no_label=True %}
 
             <div class="text-center mb-4 pt-3">
-                <button type="submit" class="btn btn-success btn-lg btn-block text-uppercase py-3"><small>{% trans "Login" %}</small></button>
+                <button type="submit" class="btn btn-success btn-lg btn-block text-uppercase font-weight-medium py-3"><small>{% trans "Login" %}</small></button>
             </div>
 
             <div class="d-flex justify-content-between align-items-center">
               <span><b>{% trans "Don't have an account?" %}</b></span>
-              <a href="{{ signup_url }}" class="btn btn-outline-info text-uppercase px-4"><small>{% trans "Register" %}</small></a>
+              <a href="{{ signup_url }}" class="btn btn-outline-info text-uppercase font-weight-medium px-4">{% trans "Register" %}</a>
             </div>
 
           </form>
