@@ -7,8 +7,8 @@
 {% block row_content %}
 <div class="col-lg-5 col-md-6 mx-auto">
 {# Form with header #}
-  <div class="card">
-      <div class="card-body mx-2 mt-2">
+  <div class="card my-3">
+      <div class="card-body mx-2">
           <h6 class="text-uppercase text-center mb-3">
               <strong>{% trans "Sign Up with" %}</strong>
           </h6>
@@ -18,7 +18,11 @@
 
             {% include "partials/form_fields.html" with no_label=True %}
 
-            <div class="text-center mb-4 pt-3">
+            <p class="text-muted small m-0 py-2">
+              By signing up, I agree to the PlacePass <a href="#termsModal" data-toggle="modal">Terms of Service</a> and <a href="#privacyModal" data-toggle="modal">Privacy Policy</a>.
+            </p>
+
+            <div class="text-center pt-2 pb-4">
                 <button type="submit" class="btn btn-success btn-lg btn-block text-uppercase py-3"><small>{% trans "Register" %}</small></button>
             </div>
 
@@ -35,3 +39,46 @@
 {# /Form with header #}
 </div>
 {% endblock %}
+
+{% block modals %}
+
+
+<div class="modal fade" id="privacyModal" tabindex="-1" role="dialog" aria-labelledby="privacyModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="privacyModalTitle">Privacy Policy</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        {% lorem 6 p %}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+<div class="modal fade" id="termsModal" tabindex="-1" role="dialog" aria-labelledby="termsModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="termsModalTitle">Terms of Service</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        {% lorem 6 p %}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock modals %}

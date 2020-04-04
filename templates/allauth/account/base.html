@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 
 {% block base_content %}
-    <main class="bg-image min-vh-100">
+    <main class="bg-image">
         <div class="min-vh-100 d-flex align-items-center">
           <div class="container">
             <div class="row">
                 {% block row_content %}
                     <div class="col-12 col-lg-10 mx-auto">
-                        <div class="card">
+                        <div class="card my-2">
                             <div class="card-body">
                                 {% block content %}
                                 {% endblock content %}
@@ -18,5 +18,9 @@
             </div>
           </div>
         </div>
-    </main>    
+    </main>
+
+    {% block modals %}
+        
+    {% endblock modals %}
 {% endblock base_content %}
