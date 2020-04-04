@@ -27,9 +27,10 @@ class ProfileSignupForm(SignupForm):
                         'password1': 'fas fa-lock',
                         'password2': 'fas fa-lock',
                     }
-        # set placeholder for password2
+        # set placeholders
         self.fields['password2'].widget.attrs['placeholder'] = _('Confirm '
                                                                  'Password')
+        self.fields['email'].widget.attrs['placeholder'] = _('Email')
 
     def save(self, request):
         user = super(ProfileSignupForm, self).save(request)
